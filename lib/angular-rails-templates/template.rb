@@ -14,11 +14,6 @@ module AngularRailsTemplates
       # we only want to process html assets inside those specified in configuration.inside_paths
       @asset_should_be_processed = configuration.inside_paths.any? { |folder| file.match(folder.to_s) }
 
-      unless @asset_should_be_processed
-        @data = nil
-        return
-      end
-      
       if configuration.htmlcompressor and @asset_should_be_processed
         @data = compress data
       end
